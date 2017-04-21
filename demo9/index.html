@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>求出数组中所有数字的和</title>
+    <style>
+        body{
+            font:12px/1.5 Tahoma;
+        }
+        #outer{
+            width:400px;
+            margin:10px auto;
+        }
+        .num{
+            font-size: 30px;
+            color:#f00;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <label>
+            <input type="text" value="1,2,10,20,32"/>
+            <span>输入数字求和,数字之间用半角","分隔</span>
+        </label>
+        <p><button>求和</button></p>
+        <strong class="num"></strong>
+    </div>
+    <script>
+        var oBtn = document.getElementsByTagName("button")[0],
+            oStrong = document.getElementsByTagName("strong")[0],
+            oInput = document.getElementsByTagName("input")[0];
+       oInput.onkeyup = function(){
+           //字符串.replace(要替换的(旧)，替换为的(新));
+           //要替换的：可以是字符串，也可以是正则表达式，支持全文匹配
+           //功能：替换掉符合匹配的字符串
+           //返回值：一个新的字符串，原字符串不变
+           //正则元字符 [......]匹配括号内任意一个字符
+           //正则元字符 [^......]匹配除了括号内的任意字符
+           this.value = this.value.replace(/[^(\d)|(,)]/,"");
+       }
+        oBtn.onclick = function(){
+            var sum = 0;
+            //字符串.split() 把字符串转化为数组 返回值：数组,原字符串不变
+            var oInput = document.getElementsByTagName("input")[0].value.split(",");
+            for(var i in oInput){
+                sum += parseInt(oInput[i])
+            }
+            oStrong.innerHTML = sum;
+        }
+
+    </script>
+</body>
+</html>
