@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>输入法</title>
+    <style>
+        body,button,ul,li{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            font:12px/1.5 Tahoma;
+        }
+        #outer{
+            width:70px;
+            margin:10px auto;
+        }
+        #ime{
+            border:1px solid #ccc;
+            margin-top: 10px;
+            display: none;
+        }
+        #ime li{
+            line-height: 24px;
+        }
+        #ime li a{
+            text-decoration:none;
+            padding:0 5px;
+            color:#00c;
+            display: block;
+        }
+        #ime li a:hover{
+           background: #d9e1f6;
+        }
+        #close{
+            border-top:1px solid #9a99ff;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <button>输入法</button>
+        <ul id="ime">
+            <li><a href="javascipt:;">拼音</a></li>
+            <li><a href="javascipt:;">手写</a></li>
+            <li id="close"><a href="javascipt:;">关闭</a></li>
+        </ul>
+    </div>
+    <script>
+        var oBtn = document.getElementsByTagName("button")[0],
+            oIme = document.getElementById("ime"),
+            oClose = document.getElementById("close"),
+            style = oIme.style;
+        oBtn.onclick = function(){
+            style.display = style.display == "block"?"none":"block"
+        }
+        oClose.onclick = function(){
+            style.display = "none"
+        }
+    </script>
+</body>
+</html>

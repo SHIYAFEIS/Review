@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>鼠标移入/移除恢复样式</title>
+    <style>
+        #div1{
+            width:150px;
+            height:150px;
+            padding:10px;
+            border:10px solid #000;
+            background: #000;
+            color:#fff;
+            margin:0 auto;
+        }
+        /*注意只是单纯写 .hover样式是不起作用的，不报错也没有效果*/
+      /* .hover{
+            background: #f0f0f0;
+            color:red;
+            border-color:red;
+        }*/
+        /*权重问题*/
+       #div1.hover{
+            background: #f0f0f0;
+            border-color:red;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">鼠标移入/移出改变样式</div>
+    <script>
+        var oDiv = document.getElementById("div1");
+        oDiv.onmouseover = function(){
+            this.className = "hover"
+        }
+        oDiv.onmouseout = function(){
+            this.className = ""
+        }
+    </script>
+
+</body>
+</html>
