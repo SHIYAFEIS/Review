@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>函数接收参数并弹出</title>
+    <style>
+        p{
+            text-align: center;
+        }
+        input{
+            padding:3px;
+        }
+        button{
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <input type="text" value="北京市" />
+    </p>
+    <p>
+        <input type="text" value="朝阳区"/>
+    </p>
+    <p>
+        <button>传参</button>
+    </p>
+    <script>
+       var myFn=function(a,b){
+           alert(a.value);
+           alert(b.value);
+       };
+        var oBtn=document.getElementsByTagName("button")[0],
+            oInput=document.getElementsByTagName("input");
+        oBtn.onclick=function(){
+            myFn(oInput[0],oInput[1])
+        }
+    </script>
+</body>
+</html>
