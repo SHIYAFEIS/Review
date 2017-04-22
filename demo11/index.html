@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>函数传参，改变Div任意属性的值</title>
+    <style>
+        body,p{
+            margin:0;
+            padding:0;
+        }
+        body{
+            font:12px/1.5 Tahoma;
+        }
+        p{
+            margin-bottom: 10px;
+        }
+        #outer{
+            width:500px;
+            margin:10px auto;
+            border:1px solid #ccc;
+            text-align: center;
+        }
+        #div1{
+            width:180px;
+            height:180px;
+            padding:10px;
+            color:#fff;
+            background: #000;
+            margin:0 auto;
+        }
+        button{
+            margin-right:15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <p>
+            <label>属性名：</label>
+            <input type="text" value="background"/>
+        </p>
+        <p>
+            <label>属性值：</label>
+            <input type="text" value="blue"/>
+        </p>
+        <p>
+            <button>确定</button>
+            <button>重置</button>
+        </p>
+    </div>
+    <div id="div1">在上方输入框中输入“属性名”及“属性值”，点击确定按钮查看效果</div>
+    <script>
+        var oDiv=document.getElementById("div1"),
+            oBtn=document.getElementsByTagName("button"),
+            oInput=document.getElementsByTagName("input");
+        var changeStyle=function(ele,attr,value){
+            ele.style[attr]=value;
+        };
+        oBtn[0].onclick=function(){
+            changeStyle(oDiv,oInput[0].value,oInput[1].value)
+        }
+        oBtn[1].onclick=function(){
+            oDiv.removeAttribute("style");
+        }
+
+    </script>
+</body>
+</html>
