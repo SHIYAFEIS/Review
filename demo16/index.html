@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>提示框效果</title>
+    <style>
+        body{
+            font:12px/1.5 Tahoma;
+        }
+        ul,li{
+            list-style: none;
+            margin:0;
+            padding:0;
+        }
+        h2{
+            line-height: 30px;
+            text-align: center;
+        }
+        #imgList{
+            width:700px;
+            border:1px solid #000;
+            overflow: hidden;
+            margin:0 auto;
+            padding:5px;
+        }
+        #imgList li{
+            width: 118px;
+            height: 118px;
+            float: left;
+            margin: 5px;
+            border:1px solid #ccc;
+            background: #eaeaea;
+            padding:5px;
+            position: relative;
+        }
+        #imgList li:hover{
+            cursor:crosshair;
+        }
+        #imgList li img{
+            width:138px;
+            height:138px;
+            border:2px solid #ccc;
+            position: absolute;
+            top:-5px;
+            left:-5px;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <ul id="imgList">
+        <h2>名车车标显示-鼠标移过显示车标</h2>
+        <li>
+            <p><b>BMW</b><br/>宝马汽车</p>
+            <img src="img/1.jpg"/>
+        </li>
+        <li>
+            <p><b>Alfa Romeo</b><br/>阿尔法-罗米欧</p>
+            <img src="img/2.jpg"/>
+        </li>
+        <li>
+            <p><b>Skoda</b><br/>斯柯达</p>
+            <img src="img/3.jpg"/>
+        </li>
+        <li>
+            <p><b>Volkswagen</b><br/>大众汽车</p>
+            <img src="img/4.jpg"/>
+        </li>
+        <li>
+            <p><b>Saab </b><br/>萨布牌轿</p>
+            <img src="img/5.jpg"/>
+        </li>
+        <li>
+            <p><b>Lamborghini</b><br/>兰博基尼</p>
+            <img src="img/6.jpg"/>
+        </li>
+        <li>
+            <p><b>Porsche</b><br/>保时捷</p>
+            <img src="img/7.jpg"/>
+        </li>
+        <li>
+            <p><b> Peugeot</b><br/>标致</p>
+            <img src="img/8.jpg"/>
+        </li>
+        <li>
+            <p><b>Mercedes1</b><br/>梅赛德斯 奔驰</p>
+            <img src="img/9.jpg"/>
+        </li>
+        <li>
+            <p><b>Buick</b><br/>别克汽车</p>
+            <img src="img/10.jpg"/>
+        </li>
+    </ul>
+    <script>
+        var lis = document.getElementsByTagName("li"),
+            oP = document.getElementsByTagName("p"),
+            oImg = document.getElementsByTagName("img");
+        for(var i=0;i<lis.length;i++){
+            lis[i].index=i;
+            lis[i].onmouseover=function(){
+                oP[this.index].style.display="none";
+                oImg[this.index].style.display="block";
+            }
+            lis[i].onmouseout=function(){
+                oP[this.index].style.display="block";
+                oImg[this.index].style.display="none";
+            }
+        }
+    </script>
+</body>
+</html>
