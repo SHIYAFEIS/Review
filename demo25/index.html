@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font:16px/1.5 Tahoma;
+        }
+        body,div{
+            margin:0;
+            padding:0;
+        }
+        #outer{
+            width:300px;
+            margin:10px auto;
+            padding:20px 0;
+            background: #000;
+            color:#fff;
+            text-align: center;
+        }
+        span{
+            padding:0 5px;
+            margin:0 10px;
+            background: #fff;
+            border:1px solid #ccc;
+            color:#000;
+        }
+        button{
+            width:80%;
+            height:30px;
+            border:0 none;
+            margin-top:20px;
+            border-radius: 10px;
+            color:#fff;
+            font-size: 16px;
+        }
+        .green{
+            background:green;
+        }
+        .red{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <span>01</span>分钟<span>40</span>秒 <br/>
+        <button class="green">启动</button>
+    </div>
+    <script>
+        var outer=document.getElementById("outer"),
+            oSpan=document.getElementsByTagName("span"),
+            oBtn=document.getElementsByTagName("button")[0],
+            timer=null;
+        oBtn.onclick=function(){
+            oBtn.className=oBtn.className=="green"?"red":"green";
+            oBtn.innerHTML=oBtn.innerHTML=="启动"?"取消":"启动";
+            oBtn.className=="red"?(timer=setInterval(getTime,1000),getTime()): (clearInterval(timer));
+        }
+        function format(a){
+            return a.toString().replace(/^(\d)$/,"0$1");
+        }
+        function getTime(){
+           var time=oSpan[0].innerHTML.replace(/^0/,"")*60+parseInt(oSpan[1].innerHTML.replace(/^0/,""));
+            time--;
+            if(time<0){
+                clearInterval()
+                return
+            };
+            oSpan[0].innerHTML=format(parseInt(time/60));
+            var se=time%60;
+            oSpan[1].innerHTML=format(parseInt(se))
+        }
+    </script>
+</body>
+</html>

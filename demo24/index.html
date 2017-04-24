@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>简易网页时钟</title>
+    <style>
+        body,div{
+            margin:0;
+            padding:0;
+        }
+        #outer{
+            width:300px;
+            text-align:center;
+            background:#1a1a1a;
+            margin:10px auto;
+            padding:20px 0;
+            color:#fff;
+        }
+        span{
+            color:#000;
+            width:80px;
+            line-height:2;
+            background:#fbfbfb;
+            border:2px solid #b4b4b4;
+            margin:0 10px;
+            padding:0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <span></span>时<span></span>分<span></span>秒
+    </div>
+    <script>
+        var oInput = document.getElementsByTagName("input"),
+            oSpan = document.getElementsByTagName("span");
+          setInterval(function(){
+              var time=new Date(),
+                  oDate=[time.getHours(),time.getMinutes(),time.getSeconds()];
+              for(var i in oDate){
+                  oSpan[i].innerHTML=format(oDate[i])
+              }
+
+          },1000);
+        function format(a) {
+            //$1指的就是符合你第一个括号里的正则的数据
+            return a.toString().replace(/^(\d)$/, "0$1")
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>
