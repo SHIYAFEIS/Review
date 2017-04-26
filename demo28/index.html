@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>arguments应用，求出函数参数总和</title>
+    <style>
+        pre{
+            background: #ccc;
+            border:1px dashed #000;
+            font:14px/1.5 Tahoma;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+    <pre>
+        &lt;script type="text/javascript"&gt;
+            var num = 0;
+            function sum() {
+                for (var i = 0; i < arguments.length; i++) {
+                    num += arguments[i]
+                }
+                return num;
+            }
+            alert(sum(1, 2, 3, 4, 2, 5, 3))
+        &lt;/script&gt;
+    </pre>
+
+    <script>
+        var num = 0;
+        function sum() {
+            for (var i = 0; i < arguments.length; i++) {
+                num += arguments[i]
+            }
+            return num;
+        }
+        alert(sum(1, 2, 3, 4, 2, 5, 3))
+    </script>
+</body>
+</html>
