@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数组练习</title>
+    <style>
+        div {
+            color: green;
+            padding: 10px 15px;
+            margin: 12px 0;
+            background: #f0f0f0;
+            border: 1px dotted #333;
+            font: 12px/1.5 Courier New;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        January(1),February(2),March(3),April(4),May(5),June(6),July(7),Aguest(8),September(9),October(10),November(11),December(12)
+    </div>
+    <input type="button" value="删除January(1)"/>
+    <input type="button" value="删除December(12)"/>
+
+    <div>0,1,2,3,4,5,6,7,8,9</div>
+    <input type="button" value="复制"/>
+    <input type="button" value="还原"/>
+
+    <div>red,green,blue,white,yellow,black,brown</div>
+    <input type="button" value="还原"/>
+    <input type="button" value="删除前三项"/>
+    <input type="button" value="删除第二至三项"/>
+    <input type="button" value="在第二项后插入(orange, purple)"/>
+    <input type="button" value="替换第二项和第三项"/>
+
+<script>
+    var oDiv = document.getElementsByTagName("div"),
+        oInput = document.getElementsByTagName("input"),
+        aTmp = [],
+        bS1 = bS2 = true;
+    function getArray(str){
+        aTmp.length=0;
+        str=str.split(",");
+        for(var i in str){
+            aTmp.push(str[i])
+        }
+        return aTmp;
+    }
+
+    //删除/添加第一项
+    oInput[0].onclick = function () {
+        aTmp = getArray(oDiv[0].innerHTML);
+        bS1 ?
+        //删除第一项， shift()方法
+            (aTmp.shift(), this.value = this.value.replace("删除","添加"), bS1 = false) :
+        //添加第一项, unshift()方法
+            (aTmp.unshift("January(1)"), this.value = this.value.replace("添加","删除"), bS1 = true);
+        //输出
+        oDiv[0].innerHTML = aTmp.join()
+    };
+
+    //删除/添加最后一项
+    oInput[1].onclick=function(){
+        aTmp=getArray(oDiv[0].innerHTML);
+        bS2?
+            //删除最后一项，pop()方法
+            (aTmp.pop(),this.value=this.value.replace("删除","添加"),bS2=false):
+            //添加最后一项，push()方法
+            (aTmp.push("December(12)"),this.value=this.value.replace("添加","删除"),bS2=true);
+        oDiv[0].innerHTML=aTmp.join();
+    }
+
+    //复制 concat()方法
+    oInput[2].onclick=function(){
+        aTmp=getArray(oDiv[1].innerHTML);
+        oDiv[1].innerHTML=aTmp.concat(aTmp).toString().replace(/\s/g,"")
+    }
+
+    //还原  数组的length 特点
+    oInput[3].onclick=function(){
+        aTmp=getArray(oDiv[1].innerHTML);
+        aTmp.length=10;
+        oDiv[1].innerHTML=aTmp.join()
+    }
+
+    //第三组数据还原
+    oInput[4].onclick=function(){
+        aTmp=["red","green","blue","white","yellow","black,brown"];
+        oDiv[2].innerHTML=aTmp.join();
+    }
+
+    //删除前三项
+    oInput[5].onclick=function(){
+        aTmp=getArray(oDiv[2].innerHTML);
+        //删除，下标0开始，长度3位
+        aTmp.splice(0,3);
+        oDiv[2].innerHTML=aTmp.join();
+    }
+
+    //删除第二至三项
+    oInput[6].onclick=function(){
+        aTmp=getArray(oDiv[2].innerHTML);
+        //删除，下标0开始，长度3位
+        aTmp.splice(1,2);
+        oDiv[2].innerHTML=aTmp.join();
+    }
+
+    //在第二项后插入(orange, purple)
+    oInput[7].onclick=function(){
+        aTmp=getArray(oDiv[2].innerHTML);
+        //插入 下标2 之前插入
+        aTmp.splice(2,0,"orange","purple");
+        oDiv[2].innerHTML=aTmp.join();
+    }
+
+    //替换第二项和第三项
+    oInput[8].onclick=function(){
+        aTmp=getArray(oDiv[2].innerHTML);
+        //替换，下标1开始，替换两位，替换内容
+        aTmp.splice(1,2,"#009900", "#0000ff");
+        oDiv[2].innerHTML=aTmp.join();
+    }
+
+
+</script>
+</body>
+</html>
