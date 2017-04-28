@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示页面坐标</title>
+    <style>
+        pre{
+            background: #dec;
+            border:1px dashed #000;
+            padding-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <pre>
+        &lt;script&gt;
+            document.onclick=function(event){
+                alert("坐标：["+event.clientX+","+event.clientY+"]")
+            }
+        &lt;/script&gt;
+    </pre>
+    <script>
+       document.onclick=function(event){
+            alert("坐标：["+event.clientX+","+event.clientY+"]")
+        }
+    </script>
+</body>
+</html>
