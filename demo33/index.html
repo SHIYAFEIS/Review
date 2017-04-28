@@ -2,9 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>模拟select控件</title>
+    <style>
+        body,div,ul,li{
+            padding:0;
+            margin:0;
+        }
+        body{
+            font:12px/1.5 Tahoma;
+            background: #dec;
+        }
+        #search{
+            width:300px;
+            background: #fff;
+            margin: 10px auto;
+            border:1px solid #000;
+            padding:10px 5px;
+        }
+        #box span{
+            display: inline-block;
+            width:150px;
+            height:20px;
+            padding:0 10px;
+            background: #ccc;
+            border:1px solid #00b0ff;
+            position: relative;
+            color:#fff;
+        }
+        #box span:after{
+            content:"";
+            border:5px solid transparent;
+            border-bottom: 8px solid #f00;
+            position: absolute;
+            right:20px;
+            top:0;
+        }
+        a{
+            display: inline-block;
+            width:60px;
+            height:20px;
+            background: #0a0a0a;
+            color:#fff;
+            text-align: center;
+            line-height: 20px;
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+            width:172px;
+            display: none;
+        }
+        ul li{
+            line-height: 24px;
+            background: #1A1A1A;
+            color:#fff;
+            padding-left: 10px;
+            border-bottom: 1px dashed #fff;
+        }
+        ul li:hover{
+            background: #c2f628;
+        }
+    </style>
 </head>
 <body>
-$END$
+    <div id="search">
+        <div id="box">
+            <span>请选择游戏名称</span>
+            <a href="javascript:;">搜索</a>
+        </div>
+        <ul>
+            <li>地下城与勇士</li>
+            <li>魔兽世界（国服）</li>
+            <li>魔兽世界（台服）</li>
+            <li>热血江湖</li>
+            <li>神龟传奇</li>
+            <li>大话西游</li>
+            <li>QQ幻想世界</li>
+        </ul>
+    </div>
+    <script>
+        var oSpan=document.getElementsByTagName("span")[0],
+            oUl=document.getElementsByTagName("ul")[0],
+            oLi=oUl.getElementsByTagName("li");
+            oSpan.onclick=function(){
+                var style=oUl.style;
+                style.display=style.display=="block"?"none":"block";
+            }
+            for(var i=0;i<oLi.length;i++){
+                oLi[i].onclick=function(){
+                    oSpan.innerHTML=this.innerHTML;
+                    oUl.style.display="none";
+                }
+            }
+    </script>
 </body>
 </html>
