@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            width: 200px;
+            list-style: none;
+        }
+
+        ul li {
+            text-align: center;
+            line-height: 30px;
+            background: #ccc;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li class="one">标题一</li>
+    <li class="text">标题二</li>
+    <li>标题三</li>
+    <li class="four">标题四</li>
+    <li class="five text">标题五</li>
+</ul>
+<script>
+    function changeBackgroundColor(className, tagName) {
+        var ele = document.getElementsByTagName(tagName);
+        for (var i = 0; i < ele.length; i++) {
+            if (ele[i].className.search(new RegExp("\\b" + className + "\\b"))
+                != -1) {
+                ele[i].style.background = "yellow"
+            }
+        }
+    }
+    changeBackgroundColor("text", "li")
+</script>
+</body>
+</html>
