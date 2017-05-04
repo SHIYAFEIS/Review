@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输出明天的日期</title>
+</head>
+<body>
+<script>
+    function getDate(addDayCount) {
+        var time = new Date();
+        time.setDate(time.getDate() + addDayCount);
+        var y = time.getFullYear(),
+            m = time.getMonth() + 1,
+            d = time.getDate();
+        return y + "-" + m + "-" + d;
+    }
+    document.write("昨天" + getDate(-1))
+    document.write("今天" + getDate(0))
+    document.write("明天" + getDate(1))
+    document.write("后天" + getDate(2))
+</script>
+</body>
+</html>
