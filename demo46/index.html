@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>随机数</title>
+    <style>
+        pre {
+            background: #dec;
+            border: 1px dashed #000;
+            padding: 5px 0;
+        }
+    </style>
 </head>
 <body>
-$END$
+    <pre>
+        求start到end之间的随机整数公式
+        Math.floor(Math.random() * (end - start + 1) + start);
+        Math.ceil(Math.random() * (end - start) + start);
+        Math.round(Math.random() * (end - start) + start);
+    </pre>
+<script>
+    //用js实现随机选取10-100之间的10个数字，存入一个数组
+    function select(start, end) {
+        var o = end - start + 1;
+        return Math.floor(Math.random() * o + start);
+    }
+    var arr = new Array();
+    for (var i = 0; i < 10; i++) {
+        arr.push(select(10, 100))
+    }
+    document.write(arr);
+
+</script>
 </body>
 </html>
