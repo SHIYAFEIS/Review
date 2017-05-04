@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>alert tagName</title>
+    <style>
+        div {
+            background: #00f;
+            width: 100px;
+            height: 100px;
+        }
+
+        span {
+            background: #0F0;
+        }
+
+        P {
+            background: #f00;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>div盒子 <span>span标签</span></div>
+    <span>span</span>
+    <p>p标签</p>
+
+    <script>
+        document.onclick = function (e) {
+            var e = window.event || event;
+            var tag = e.target || e.srcElement;
+            alert(tag.tagName);
+        }
+    </script>
+</body>
+</html>
