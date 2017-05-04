@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驼峰</title>
+</head>
+<body>
+<script>
+    function toCamelCase(str) {
+        var subStr = str.split("-"),
+            sub = subStr[0];
+        for (var i = 1; i < subStr.length; i++) {
+            sub += subStr[i].substr(0, 1).toUpperCase() + subStr[i].substr(1)
+        }
+        return sub;
+    }
+    document.write(toCamelCase("border-left-color"))
+</script>
+</body>
+</html>
