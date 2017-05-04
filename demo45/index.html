@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>倒计时</title>
+    <style>
+        div {
+            width: 400px;
+            margin: 10px auto;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div>
+    <input type="text" placeholder="请输入秒数">
+    <button>确定</button>
+    <p></p>
+</div>
+<script>
+    var oInput = document.getElementsByTagName("input")[0],
+        oBtn = document.getElementsByTagName("button")[0],
+        oP = document.getElementsByTagName("p")[0];
+    oBtn.onclick = function () {
+        var time = parseInt(oInput.value);
+        var timer = setInterval(function () {
+            oP.innerHTML = time--;
+            if (time < 0) clearInterval(timer)
+        }, 1000)
+    }
+</script>
 </body>
 </html>
