@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>为数组扩展indexOf、remove及removeat方法</title>
+</head>
+<body>
+    <script>
+        //indexOf方法
+        var oldArrayIndexOf=Array.indexOf; //判断原始浏览器是否存在indexOf方法
+        Array.prototype.indexOf=function(obj){
+            if(!oldArrayIndexOf){
+                for(var i=0,imax=this.length;i<imax;i++){
+                    if(this[i]===obj){
+                        return i
+                    }
+                }
+                return -1
+            }else{
+                return oldArrayIndexOf(obj)
+            }
+        }
+        //remove  删除对应下标元素
+        Array.prototype.remove=function(dx){
+            if(isNaN(dx) || dx>this.length){
+                return false;
+            }
+            for(var i=dx;i<this.length;i++){
+                this[i]=this[i+1]
+            }
+            this.length-=1;
+        }
+        var arr=["a","b","c","d"];
+      /*  arr.remove(1);
+        console.log(arr);*/
+        //removeat  删除指定下标这一个选项
+        Array.prototype.removeat=function(index){
+            this.splice(index,1)
+        }
+        arr.removeat(0,1);
+        console.log(arr)
+    </script>
+</body>
+</html>
