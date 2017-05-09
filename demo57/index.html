@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原地实现数组反转</title>
+</head>
+<body>
+<script>
+   function reversal(arr){
+       for(var i=0;i<arr.length/2;i++){
+           var temp=arr[i];
+           arr[i]=arr[arr.length-i-1];
+           arr[arr.length-i-1]=temp;
+       }
+   }
+   var array=[1,"ab",3,4,5];
+   reversal(array);
+   console.log(array)
+</script>
+</body>
+</html>
