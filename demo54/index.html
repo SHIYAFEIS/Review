@@ -2,9 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>面向对象</title>
 </head>
 <body>
-$END$
+<script>
+    //定义形状类
+    function Shape(color){
+        this.color=color;
+    }
+    Shape.prototype.getColor=function(){
+        return this.color;
+    }
+    Shape.prototype.setColor=function(newColor){
+        this.color=newColor
+    }
+    //定义矩形子类
+    function Rectangle(color){
+        Shape.call(this,color)
+    }
+    //实现继承
+    Rectangle.prototype=new Shape();
+    Rectangle.prototype.getArea=function(width,height){
+        return width*height;
+    }
+    //定义圆形子类
+    function Circle(color){
+        Shape.call(this,color)
+    }
+    //实现继承
+    Circle.prototype=new Shape();
+    Circle.prototype.getArea=function(radius){
+        return Math.PI*Math.pow(radius,2)
+    }
+    var r1=new Rectangle("blue");
+    console.log(r1.getColor());
+    console.log(r1.getArea(30,40));
+    var s1=new Shape("yellow");
+    console.log(s1.getColor());
+    s1.setColor("red");
+    console.log(s1.getColor());
+    var c1=new Circle();
+    console.log(c1.getArea(908))
+</script>
 </body>
 </html>
