@@ -2,9 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>3种方法打印索引值</title>
+    <style>
+        li{
+            width:200px;
+            text-align: center;
+            line-height: 20px;
+            background: #00b0ff;
+            margin-bottom: 5px;
+            list-style: none;
+        }
+    </style>
 </head>
 <body>
-$END$
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        var lis=document.getElementsByTagName("li");
+        //方法一
+       /* for(var i=0;i<lis.length;i++){
+            lis[i].index=i;
+            lis[i].onclick=function(){
+                alert(this.index)
+            }
+        }*/
+        //方法二
+        /*for(var i=0;i<lis.length;i++){
+            lis[i].setAttribute("data-num",i);
+        }
+        for(var i=0;i<lis.length;i++){
+            lis[i].onclick=function(){
+                alert(this.getAttribute("data-num"))
+            }
+        }*/
+        //方法三
+        for(var i=0;i<lis.length;i++){
+            (function(i){
+                lis[i].onclick=function () {
+                    alert(i)
+                }
+            })(i)
+        }
+    </script>
 </body>
 </html>
