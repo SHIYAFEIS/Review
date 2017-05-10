@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js对象的深度克隆</title>
+</head>
+<body>
+<script>
+   function clone(obj){
+       var buf;
+       if(obj instanceof Array){
+           buf=[];
+           var i=obj.length;
+           while(i--){
+               buf[i]=clone(obj[i])
+           }
+          return buf;
+       }else if(obj instanceof Object){
+           buf={};
+           for(var k in obj){
+               buf[k]=clone(obj[k])
+           }
+           return buf;
+       }else{
+           return obj
+       }
+   }
+</script>
+</body>
+</html>
