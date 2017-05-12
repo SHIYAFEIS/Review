@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>angular自定义指令</title>
+    <style>
+        body{
+            display: -webkit-flex;
+            -webkit-flex-direction: column;
+        }
+        header,footer{
+            width:100%;
+            height:44px;
+            line-height: 44px;
+            background: #dec;
+        }
+        run-directive{
+            -webkit-flex:1;
+        }
+        span{
+            display: block;
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+    <header>{{ title }}</header>
+    <input type="text" ng-model="title">
+    <run-directive data={{title}}></run-directive>
+    <footer>这是页脚</footer>
+
+    <script src="./angular.js"></script>
+    <script>
+        var app=angular.module("app",[]);
+        app.run(function ($rootScope) {
+            $rootScope.title="全局头部0000"
+        });
+        app.directive("runDirective",function(){
+            return{
+                restrict:"ACEM",
+                replace:true,
+                scope:{
+                    data:"@"
+                },
+                templateUrl:"tpl.html",
+                controller:function ($scope) {
+                    $scope.title="春江花月夜000！"
+                },
+                link:function(scope,ele,attr){
+                    ele.find("span").on("click",function(){
+                        alert("0123")
+                    })
+                },
+
+            }
+        })
+
+    </script>
+
+</body>
+</html>
