@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this指向问题</title>
+</head>
+<body>
+    <div>
+        <h3>
+            一：必须搞清楚在JS里面，函数的几种调用方式:
+        </h3>
+        <ol>
+            <li>普通函数调用</li>
+            <li>作为方法来调用</li>
+            <li>作为构造函数来调用</li>
+            <li>使用apply/call方法来调用</li>
+            <li>Function.prototype.bind方法</li>
+            <li>es6箭头函数</li>
+        </ol>
+        <p>
+            但是不管函数是按哪种方法来调用的，请记住一点：谁调用这个函数或方法,this关键字就指向谁。
+        </p>
+    </div>
+    <script>
+        //普通函数调用  this指向window
+        /*function fn1(){
+            this.name="ff";
+            console.log(this);
+            console.log(this.name)
+        }
+        fn1()  //window ff*/
+
+       /* var name="kk";
+        function fn2(){
+            console.log(this);
+            console.log(this.name)
+        }
+        fn2();  //window  kk*/
+
+        //作为方法来调用
+      /*  var name="three";
+        var per={
+            name:"san",
+            say:function(){
+                console.log(this.name)
+            }
+        }
+        per.say();  //san  指向调用它的per*/
+
+
+       /* var fn3=per.say;
+        fn3() //three  指向window*/
+
+      /*  var personA={
+            name:"xl",
+            showName:function(){
+                console.log(this.name);
+            }
+        }
+        var personB={
+            name:"XL",
+            sayName:personA.showName
+        }
+        personB.sayName();  //指向personB*/
+
+
+        //作为构造函数来调用  指向实例
+       /* function Person(name){
+            this.name=name;
+        }
+       /!* var p1=Person("four");
+        console.log(p1.name)  //报错*!/
+
+       var p2=new Person("four");
+       console.log(p2.name)  //four*/
+
+        //使用apply/call方法来调用
+       /* var user="five";
+        var fn5={
+            user:"wu",
+            f5:function () {
+                console.log(this.user)
+            }
+        }
+        fn5.f5.call();  //five  指向window*/
+
+       /* function FruitA(n1,n2){
+            this.n1=n1;
+            this.n2=n2;
+            this.change=function(x,y){
+                this.n1=x;
+                this.n2=y;
+            }
+        }
+
+        var fruitA=new FruitA("cheery","banana");
+        var FruitB={
+            n1:"apple",
+            n2:"orange"
+        };
+        fruitA.change.call(FruitB,"pear","peach");
+
+        console.log(FruitB.n1); //输出 pear
+        console.log(FruitB.n2);// 输出 peach*/
+
+        //Function.prototype.bind方法
+      /*  var name="XL";
+        function Person(name){
+            this.name=name;
+            this.sayName=function(){
+               /!* setTimeout(function(){
+                    //this指向window  XL
+                    console.log("my name is "+this.name);
+                },50)*!/
+
+                setTimeout(function(){
+                    //this指向Person  xl
+                    console.log("my name is "+this.name);
+                }.bind(this),50)
+            }
+        }
+        var person=new Person("xl");
+        person.sayName();
+*/
+
+      /*  var name="全局";
+        var person={
+            name:"局部",
+            showName:function(){
+                console.log(this.name);
+            },
+            sayName:function(){
+                (function(callback){
+                    callback();  //全局
+                })(this.showName)
+            }
+        }
+        person.sayName();*/
+
+
+        var name="全局";
+        var person={
+            name:"局部",
+            showName:function(){
+                console.log(this.name);
+            },
+            /*sayName:function(){
+                var that=this;
+               (function(callback){
+                   callback();
+               })(that.showName)
+            }*/
+
+            sayName:function(){
+                (function(callback){
+                    callback();
+                })(this.showName)
+            }
+
+        }
+        //person.sayName() ;
+        //eval 该函数执行的时候，this绑定到当前作用域的对象上
+      /*  var name="XL";
+        var person={
+            name:"xl",
+            showName:function(){
+                eval("console.log(this.name)");
+            }
+        }
+
+        person.showName();  //输出  "xl"
+
+        var a=person.showName;
+        a();  //输出  "XL"*/
+
+
+        //箭头函数  es6里面this指向固定化，始终指向外部对象，因为箭头函数没有this,因此它自身不能进行new实例化,同时也不能使用call, apply, bind等方法来改变this的指向
+
+        function Timer() {
+            this.seconds = 0;
+            setInterval( () => this.seconds ++, 1000);
+        }
+
+        var timer = new Timer();
+
+        setTimeout( () => console.log(timer.seconds), 3100); //3
+
+
+    </script>
+</body>
+</html>
