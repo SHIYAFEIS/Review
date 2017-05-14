@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建对象几种常见方式</title>
+</head>
+<body>
+    <script>
+        //工厂模式
+        function cPerson(name,sex,age){
+            var o = new Object();
+            o.name = name;
+            o.sex = sex;
+            o.age = age;
+            o.show = function(){
+                console.log(this.name,this.age,this.sex);
+            }
+            return o;
+        }
+        var p1 = cPerson('ff','女','20');
+        p1.show();
+        var p2 = cPerson('kk','男','18');
+        p2.show();
+        //构造函数
+        function CPerson(name,sex,age) {//注意这里 构造函数首字母大写
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+            this.show = function () {
+                console.log(this.name, this.age, this.sex);
+            }
+        }
+        var p1 = new CPerson('ff','女','20');
+        p1.show();
+        var p2 = new CPerson('kk','男','18');
+        p2.show();
+        //原型模式
+        function APerson(){
+
+        }
+        APerson.prototype.name='hh';
+        APerson.prototype.sex='男';
+        APerson.prototype.age=30;
+        APerson.prototype.show=function(){
+            console.log(this.name, this.age, this.sex);
+        }
+
+        var p1 = new APerson();
+        p1.show(); //hh 30 男
+        var p2 = new APerson();
+        p2.show(); //hh 30 男
+        console.log(p1.show == p2.show)//true
+    </script>
+</body>
+</html>
