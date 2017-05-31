@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串方法练习</title>
+</head>
+<body>
+<input type="text" value="shianyunnihao">
+    <script>
+       var oInput=document.getElementsByTagName("input")[0].value;
+       //console.log(oInput);
+       console.log(oInput.match("shianyun"))
+        console.log(/shianyun/i.test(oInput))
+        console.log(/shianyun/.exec(oInput))
+
+    </script>
+</body>
+</html>
